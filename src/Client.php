@@ -198,7 +198,7 @@ class Client
 
     private function doRegisterOrder($orderId, int $amount, string $returnUrl, array $data = [], $method = 'register.do'): array
     {
-        $data['orderNumber'] = $orderId;
+        $data['orderNumber'] = $orderId . "";
         $data['amount']      = $amount;
         $data['returnUrl']   = $returnUrl;
 
@@ -361,8 +361,6 @@ class Client
             $action = $this->prefixDefault . $action;
         }
 
-        $rest = (0 === \strpos($action, $this->prefixDefault));
-
         $uri = $this->apiUri . $action;
 
         if (!isset($data['language']) && null !== $this->language) {
@@ -371,17 +369,12 @@ class Client
 
         $method = $this->httpMethod;
 
-        if ($rest) {
-            $headers['Content-Type'] = 'application/x-www-form-urlencoded';
-            $data['userName'] = $this->userName;
-            $data['password'] = $this->password;
-            $data = \http_build_query($data, '', '&');
-        } else {
-            $headers['Content-Type'] = 'application/json';
-            $data = \json_encode($data);
-            $method = HttpClientInterface::METHOD_POST;
-        }
-
+        $headers['Content-Type'] = 'application/json';
+        $data['userName'] = $this->userName;
+        $data['password'] = $this->password;
+        $data = \json_encode($data);
+        $method = HttpClientInterface::METHOD_POST;
+        
         $httpClient = $this->getHttpClient();
 
         list($httpCode, $response) = $httpClient->request($uri, $method, $headers, $data);

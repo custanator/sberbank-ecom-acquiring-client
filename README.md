@@ -90,7 +90,7 @@ You can interact with the Sberbank REST API using a low level method `execute`:
 
 ```php
 $client->execute('/ecomm/gw/partner/api/v1/register.do', [
-    'orderNumber' => 1111,
+    'orderNumber' => '1111',
     'amount' => 10,
     'returnUrl' => 'http://localhost/sberbank/success',
 ]);
@@ -115,7 +115,7 @@ use custanator\SberbankEcomAcquiring\Currency;
 $client = new Client(['userName' => 'username', 'password' => 'password']);
 
 // Required arguments
-$orderId     = 1234;
+$orderId     = '1234';
 $orderAmount = 1000;
 $returnUrl   = 'http://mycoolshop.local/payment-success';
 
