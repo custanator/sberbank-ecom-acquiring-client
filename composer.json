@@ -1,0 +1,34 @@
+{
+  "name": "custanator/sberbank-ecom-acquiring-client",
+  "type": "library",
+  "description": "Client for working with Sberbank's ecommerce acquiring REST API",
+  "keywords": [
+    "sberbank",
+    "acquiring",
+    "credit card",
+    "client"
+  ],
+  "homepage": "https://github.com/custanator/sberbank-ecom-acquiring-client",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Rustam Salikhov",
+      "email": "custanator@mail.ru"
+    }
+  ],
+  "require": {
+    "php": "^7.1||^8",
+    "ext-json": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "custanator\\SberbankEcomAcquiring\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "custanator\\SberbankEcomAcquiring\\Tests\\": "tests/"
+    }
+  },
+  "minimum-stability": "stable"
+}
