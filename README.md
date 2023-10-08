@@ -11,7 +11,17 @@ PHP client for Sberbank Ecommerce REST API.
 ## Installation
 
 ```sh
-composer require 'custanator/sberbank-ecom-acquiring-client'
+{
+  "repositories": [
+    {
+      "url": "https://github.com/custanator/sberbank-ecom-acquiring-client.git",
+      "type": "git"
+    }
+  ],
+  "require": {
+    "custanator/sberbank-ecom-acquiring-client": "1.0.2"
+  }
+}
 ```
 
 ## Usage
