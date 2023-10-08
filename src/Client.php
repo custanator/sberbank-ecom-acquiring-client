@@ -206,16 +206,12 @@ class Client
             $data['currency'] = $this->currency;
         }
 
-        if (isset($data['jsonParams'])) {
-            if (!is_array($data['jsonParams'])) {
-                throw new \InvalidArgumentException('The "jsonParams" parameter must be an array.');
-            }
-
-            $data['jsonParams'] = json_encode($data['jsonParams']);
+        if (isset($data['jsonParams']) && !is_array($data['jsonParams'])) {
+            throw new \InvalidArgumentException('The "jsonParams" parameter must be an array.');
         }
 
-        if (isset($data['orderBundle']) && is_array($data['orderBundle'])) {
-            $data['orderBundle'] = \json_encode($data['orderBundle']);
+        if (isset($data['orderBundle']) && !is_array($data['orderBundle'])) {
+            throw new \InvalidArgumentException('The "orderBundle" parameter must be an array.');
         }
 
         return $this->execute($method, $data);
