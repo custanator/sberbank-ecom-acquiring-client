@@ -35,8 +35,7 @@ class ClientTest extends TestCase
                 $this->anything(),
                 $this->anything(),
                 $this->equalTo('anything=anything&userName=rustam&password=querty123')
-            )
-        ;
+            );
 
         $client = new Client([
             'userName' => 'rustam',
@@ -58,8 +57,7 @@ class ClientTest extends TestCase
                 $this->anything(),
                 $this->anything(),
                 $this->equalTo('anything=anything&token=querty123')
-            )
-        ;
+            );
 
         $client = new Client([
             'token' => 'querty123',
@@ -103,8 +101,7 @@ class ClientTest extends TestCase
 
         $httpClient
             ->expects($this->atLeastOnce())
-            ->method('request')
-        ;
+            ->method('request');
 
         $client = new Client([
             'userName' => 'rustam',
@@ -142,8 +139,7 @@ class ClientTest extends TestCase
                 HttpClientInterface::METHOD_POST,
                 $this->anything(),
                 $this->anything()
-            )
-        ;
+            );
 
         $client = new Client([
             'userName' => 'rustam',
@@ -164,8 +160,7 @@ class ClientTest extends TestCase
             ->with(
                 'https://github.com/custanator/sberbank-ecom-acquiring-client/ecomm/gw/partner/api/v1/testAction.do',
                 HttpClientInterface::METHOD_GET
-            )
-        ;
+            );
 
         $client = new Client([
             'userName' => 'rustam',
@@ -241,7 +236,7 @@ class ClientTest extends TestCase
         $httpClient = $this->getHttpClientToTestSendingData(
             '/ecomm/gw/partner/api/v1/register.do',
             'POST',
-            [ 'Content-Type' => 'application/x-www-form-urlencoded' ],
+            ['Content-Type' => 'application/x-www-form-urlencoded'],
             'currency=330&orderNumber=eee-eee-eee&amount=1200&returnUrl=https%3A%2F%2Fgithub.com%2Fvoronkovich%2Fsberbank-acquiring-client&token=abrakadabra'
         );
 
@@ -258,14 +253,14 @@ class ClientTest extends TestCase
         $httpClient = $this->getHttpClientToTestSendingData(
             '/other/prefix/register.do',
             'POST',
-            [ 'Content-Type' => 'application/x-www-form-urlencoded' ],
+            ['Content-Type' => 'application/x-www-form-urlencoded'],
             'currency=330&orderNumber=eee-eee-eee&amount=1200&returnUrl=https%3A%2F%2Fgithub.com%2Fvoronkovich%2Fsberbank-acquiring-client&token=abrakadabra'
         );
 
         $client = new Client([
             'token' => 'abrakadabra',
             'httpClient' => $httpClient,
-            'prefixDefault'=>'/other/prefix/'
+            'prefixDefault' => '/other/prefix/'
         ]);
 
         $client->registerOrder('eee-eee-eee', 1200, 'https://github.com/custanator/sberbank-ecom-acquiring-client', ['currency' => 330]);
@@ -276,7 +271,7 @@ class ClientTest extends TestCase
         $httpClient = $this->getHttpClientToTestSendingData(
             '/ecomm/gw/partner/api/v1/registerPreAuth.do',
             'POST',
-            [ 'Content-Type' => 'application/x-www-form-urlencoded' ],
+            ['Content-Type' => 'application/x-www-form-urlencoded'],
             'currency=330&orderNumber=eee-eee-eee&amount=1200&returnUrl=https%3A%2F%2Fgithub.com%2Fvoronkovich%2Fsberbank-acquiring-client&token=abrakadabra'
         );
 
@@ -314,7 +309,7 @@ class ClientTest extends TestCase
         $httpClient = $this->getHttpClientToTestSendingData(
             '/ecomm/gw/partner/api/v1/register.do',
             'POST',
-            [ 'Content-Type' => 'application/x-www-form-urlencoded' ],
+            ['Content-Type' => 'application/x-www-form-urlencoded'],
             'jsonParams=%7B%22showApplePay%22%3Atrue%2C%22showGooglePay%22%3Atrue%7D&orderNumber=1&amount=1&returnUrl=returnUrl&token=abc'
         );
 
@@ -339,7 +334,7 @@ class ClientTest extends TestCase
         $httpClient = $this->getHttpClientToTestSendingData(
             '/ecomm/gw/partner/api/v1/register.do',
             'POST',
-            [ 'Content-Type' => 'application/x-www-form-urlencoded' ],
+            ['Content-Type' => 'application/x-www-form-urlencoded'],
             'orderBundle=%7B%22items%22%3A%5B%22item1%22%2C%22item2%22%5D%7D&orderNumber=1&amount=1&returnUrl=returnUrl&token=abc'
         );
 
@@ -363,7 +358,7 @@ class ClientTest extends TestCase
         $httpClient = $this->getHttpClientToTestSendingData(
             '/ecomm/gw/partner/api/v1/deposit.do',
             'POST',
-            [ 'Content-Type' => 'application/x-www-form-urlencoded' ],
+            ['Content-Type' => 'application/x-www-form-urlencoded'],
             'currency=810&orderId=aaa-bbb-yyy&amount=1000&token=abrakadabra'
         );
 
@@ -380,7 +375,7 @@ class ClientTest extends TestCase
         $httpClient = $this->getHttpClientToTestSendingData(
             '/ecomm/gw/partner/api/v1/reverse.do',
             'POST',
-            [ 'Content-Type' => 'application/x-www-form-urlencoded' ],
+            ['Content-Type' => 'application/x-www-form-urlencoded'],
             'currency=480&orderId=aaa-bbb-yyy&token=abrakadabra'
         );
 
@@ -397,7 +392,7 @@ class ClientTest extends TestCase
         $httpClient = $this->getHttpClientToTestSendingData(
             '/ecomm/gw/partner/api/v1/refund.do',
             'POST',
-            [ 'Content-Type' => 'application/x-www-form-urlencoded' ],
+            ['Content-Type' => 'application/x-www-form-urlencoded'],
             'currency=456&orderId=aaa-bbb-yyy&amount=5050&token=abrakadabra'
         );
 
@@ -414,7 +409,7 @@ class ClientTest extends TestCase
         $httpClient = $this->getHttpClientToTestSendingData(
             '/rest/getOrderStatusExtended.do',
             'POST',
-            [ 'Content-Type' => 'application/x-www-form-urlencoded' ],
+            ['Content-Type' => 'application/x-www-form-urlencoded'],
             'currency=100&orderId=aaa-bbb-yyy&token=abrakadabra'
         );
 
@@ -431,7 +426,7 @@ class ClientTest extends TestCase
         $httpClient = $this->getHttpClientToTestSendingData(
             '/ecomm/gw/partner/api/v1/paymentOrderBinding.do',
             'POST',
-            [ 'Content-Type' => 'application/x-www-form-urlencoded' ],
+            ['Content-Type' => 'application/x-www-form-urlencoded'],
             'language=en&mdOrder=xxx-yyy-zzz&bindingId=600&token=abrakadabra'
         );
 
@@ -448,7 +443,7 @@ class ClientTest extends TestCase
         $httpClient = $this->getHttpClientToTestSendingData(
             '/ecomm/gw/partner/api/v1/bindCard.do',
             'POST',
-            [ 'Content-Type' => 'application/x-www-form-urlencoded' ],
+            ['Content-Type' => 'application/x-www-form-urlencoded'],
             'language=ru&bindingId=bbb000&token=abrakadabra'
         );
 
@@ -463,9 +458,9 @@ class ClientTest extends TestCase
     public function testUnbindsACard()
     {
         $httpClient = $this->getHttpClientToTestSendingData(
-            '/ecomm/gw/partner/api/v1/unBindCard.do',
+            '/ecomm/gw/partner/api/v1/unbindCard.do',
             'POST',
-            [ 'Content-Type' => 'application/x-www-form-urlencoded' ],
+            ['Content-Type' => 'application/x-www-form-urlencoded'],
             'language=en&bindingId=uuu800&token=abrakadabra'
         );
 
@@ -482,7 +477,7 @@ class ClientTest extends TestCase
         $httpClient = $this->getHttpClientToTestSendingData(
             '/ecomm/gw/partner/api/v1/getBindings.do',
             'POST',
-            [ 'Content-Type' => 'application/x-www-form-urlencoded' ],
+            ['Content-Type' => 'application/x-www-form-urlencoded'],
             'language=ru&clientId=clientIDABC&token=abrakadabra'
         );
 
@@ -501,8 +496,7 @@ class ClientTest extends TestCase
         $httpClient
             ->expects($this->atLeastOnce())
             ->method('request')
-            ->with($this->equalTo(Client::API_URI.'/ecomm/gw/partner/api/v1/getOrderStatusExtended.do'))
-        ;
+            ->with($this->equalTo(Client::API_URI . '/ecomm/gw/partner/api/v1/getOrderStatusExtended.do'));
 
         $client = new Client([
             'token' => 'abrakadabra',
@@ -523,8 +517,7 @@ class ClientTest extends TestCase
 
         $httpClient
             ->method('request')
-            ->willReturn($response)
-        ;
+            ->willReturn($response);
 
         return $httpClient;
     }
@@ -541,8 +534,7 @@ class ClientTest extends TestCase
                 $this->equalTo($method),
                 $this->equalTo($headers),
                 $this->equalTo($data)
-            )
-        ;
+            );
 
         return $httpClient;
     }

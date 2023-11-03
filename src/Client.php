@@ -107,7 +107,7 @@ class Client
         }
 
         if (isset($options['userName']) && isset($options['password'])) {
-        
+
             $this->userName = $options['userName'];
             $this->password = $options['password'];
         } else {
@@ -120,7 +120,7 @@ class Client
         $this->prefixDefault = $options['prefixDefault'] ?? self::API_PREFIX_DEFAULT;
 
         if (isset($options['httpMethod'])) {
-            if (!\in_array($options['httpMethod'], [ HttpClientInterface::METHOD_GET, HttpClientInterface::METHOD_POST ])) {
+            if (!\in_array($options['httpMethod'], [HttpClientInterface::METHOD_GET, HttpClientInterface::METHOD_POST])) {
                 throw new \InvalidArgumentException(
                     \sprintf(
                         'An HTTP method "%s" is not supported. Use "%s" or "%s".',
@@ -320,7 +320,7 @@ class Client
     {
         $data['bindingId'] = $bindingId;
 
-        return $this->execute($this->prefixDefault . 'unBindCard.do', $data);
+        return $this->execute($this->prefixDefault . 'unbindCard.do', $data);
     }
 
     /**
@@ -370,7 +370,7 @@ class Client
         $data['password'] = $this->password;
         $data = \json_encode($data);
         $method = HttpClientInterface::METHOD_POST;
-        
+
         $httpClient = $this->getHttpClient();
 
         list($httpCode, $response) = $httpClient->request($uri, $method, $headers, $data);
