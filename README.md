@@ -19,7 +19,7 @@ PHP client for Sberbank Ecommerce REST API.
     }
   ],
   "require": {
-    "custanator/sberbank-ecom-acquiring-client": "1.0.3"
+    "custanator/sberbank-ecom-acquiring-client": "1.0.4"
   }
 }
 ```

@@ -91,6 +91,7 @@ class Client
             'language',
             'password',
             'userName',
+            'merchantLogin',
             'prefixDefault',
         ];
 
