@@ -36,6 +36,13 @@ class Client
     private $password;
 
     /**
+     * A language code in ISO 639-1 format ('en', 'ru' and etc.).
+     *
+     * @var string
+     */
+    private $language;
+
+    /**
      * Currency code in ISO 4217 format.
      *
      * @var int
@@ -43,11 +50,11 @@ class Client
     private $currency;
 
     /**
-     * A language code in ISO 639-1 format ('en', 'ru' and etc.).
-     *
+     * merchantLogin
+     * 
      * @var string
      */
-    private $language;
+    private $merchantLogin;
 
     /**
      * An API uri.
@@ -116,6 +123,7 @@ class Client
         }
 
         $this->language = $options['language'] ?? null;
+        $this->merchantLogin = $options['merchantLogin'] ?? null;
         $this->currency = $options['currency'] ?? null;
         $this->apiUri = $options['apiUri'] ?? self::API_URI;
         $this->prefixDefault = $options['prefixDefault'] ?? self::API_PREFIX_DEFAULT;
@@ -369,6 +377,9 @@ class Client
         $headers['Content-Type'] = 'application/json';
         $data['userName'] = $this->userName;
         $data['password'] = $this->password;
+        if (null !== $this->merchantLogin) {
+            $data['merchantLogin'] = $this->merchantLogin;
+        }
         $data = \json_encode($data);
         $method = HttpClientInterface::METHOD_POST;
 
